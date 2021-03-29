@@ -2,7 +2,7 @@
   "name": "new-hire-test-master",
   "version": "1.0.0",
   "description": "Test from Verifi Media",
-  "main": "src/server.js",
+  "main": "src/app.js",
   "scripts": {
     "start": "node src/server.js",
     "local": "nodemon src/serve.js"
