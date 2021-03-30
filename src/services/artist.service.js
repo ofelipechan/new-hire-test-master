@@ -1,4 +1,4 @@
-const Artist = require('../models/artist');
+const Artist = require('../models/artist.model');
 
 class ArtistService {
     async findAll() {
@@ -15,7 +15,7 @@ class ArtistService {
             const result = await Artist.findOne(conditions);
             return result;
         } catch (error) {
-            console.error('An error occurred while trying to find all artists. ', error);
+            console.error('An error occurred while trying to find an artist. ', error);
         }
     }
 

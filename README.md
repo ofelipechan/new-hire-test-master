@@ -22,7 +22,7 @@ $ docker-compose pull
 $ docker-compose up --build
 ```
 
-API will be listening at http://localhost:3000
+API will be listening at http://localhost:4000
 
 ### Seed
 To populate the database, open another command terminal window and run:

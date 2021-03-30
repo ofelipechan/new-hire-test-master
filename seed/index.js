@@ -1,5 +1,8 @@
 const fs = require('fs');
-const {  connectDatabase, disconnectDatabase } = require('../src/database');
+const {
+    connectDatabase,
+    disconnectDatabase
+} = require('../src/database');
 
 const seedsToInsert = []
 let totalLength = 0;
@@ -7,37 +10,43 @@ let done = 0;
 
 connectDatabase(() => {
     console.log('database connected');
-    console.log('importing seed files');
-    requireFiles();
-    console.log('creating documents')
-    seedsToInsert.forEach((item) => {
-        createDocuments(item.data, item.service);
-    })
+    try {
+        console.log('importing seed files');
+        requireFiles();
+        console.log('creating documents')
+        seedsToInsert.forEach((item) => {
+            createDocuments(item.data, item.service);
+        });
+    } catch (error) {
+        disconnectDatabase();
+    }
 });
 
 function requireFiles() {
     const directory = `${__dirname}/data`;
+    const mapFilesAndServices = (fileName) => {
+        const fileRequired = require(`./data/${fileName}`);
+        totalLength += fileRequired.data.length;
+        const service = mapService(fileName);
+        seedsToInsert.push({
+            data: fileRequired.data,
+            service
+        });
+    };
+
     fs.readdirSync(directory)
         .filter((fileName) => fileName.endsWith('.json'))
-        .map((fileName) => {
-            const fileRequired = require(`./data/${fileName}`);
-            totalLength += fileRequired.data.length;
-            const service = mapService(fileName);
-            seedsToInsert.push({
-                data: fileRequired.data,
-                service
-            });
-        })
+        .map(mapFilesAndServices)
 }
 
 function mapService(fileName) {
-    if(fileName.includes('artist')) {
+    if (fileName.includes('artist')) {
         return require('../src/services/artist.service');
     }
-    if(fileName.includes('label')) {
+    if (fileName.includes('label')) {
         return require('../src/services/label.service');
     }
-    if(fileName.includes('release')) {
+    if (fileName.includes('release')) {
         return require('../src/services/release.service');
     }
 }
