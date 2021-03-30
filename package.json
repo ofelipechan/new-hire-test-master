@@ -4,8 +4,9 @@
   "description": "Test from Verifi Media",
   "main": "src/app.js",
   "scripts": {
-    "start": "node src/server.js",
-    "local": "nodemon src/serve.js"
+    "start": "node src/app.js",
+    "local": "nodemon src/app.js",
+    "seed": "node seed/index.js"
   },
   "repository": {
     "type": "git",

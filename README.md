@@ -1,80 +1,51 @@
-### Directions
-- Setup a database / data store to house the json data provided (labels, artists, releases) 
-- Using a data processing implementation, remove any existing duplicates before inserting them into your data repository.
-- Create a POST route that validates and saves incoming data 
-- Create a GET route that can retrieve and return artist release data based on the following parameters:
-    - Return all artist data
-    - Return a single artist by name or ID
-    - Return multiple artists by names or ID's
-    - Filter by "album" or "single"
-    - Filter by label id
-    - Filter by UPC
+# Verifi Media Test
 
-For example, when querying for the artist "Banks", the response would include her artist info, releases and label info.
+## This project uses
 
-A valid JSON response would comply with the following schema:
-```
-{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "properties": {
-    "id": { "type": "string", "pattern": "\\d{6}" },
-    "name": { "type": "string" },
-    "spotifyId": { "type": "string" },
-    "genres": { "type": "array", "items": [{ "type": "string" }] },
-    "releases": {
-      "type": "array",
-      "items": [
-        {
-          "type": "object",
-          "properties": {
-            "title": { "type": "string" },
-            "release_date": { "type": "string" },
-            "track_count": { "type": "integer" },
-            "upc": { "type": "string", "pattern": "\\d{12}" },
-            "type": { "type": "string", "enum": ["album", "single"] },
-            "artists": {
-              "type": "array",
-              "items": [{ "type": "string", "pattern": "\\d{6}" }]
-            },
-            "label": {
-              "type": "object",
-              "properties": {
-                "id": { "type": "string", "pattern": "\\d{6}" },
-                "distributor": { "type": ["string", "null"] },
-                "name": { "type": "string" },
-                "region": { "type": "string", "enum": ["CA", "UK", "US"] }
-              },
-              "required": ["id", "distributor", "name", "region"]
-            }
-          },
-          "required": [
-            "title",
-            "release_date",
-            "track_count",
-            "upc",
-            "type",
-            "artists",
-            "label"
-          ]
-        }
-      ]
-    }
-  },
-  "required": ["id", "name", "spotifyId", "genres", "releases"]
-}
+* [Nodejs](https://nodejs.org/)
+* [Mongodb](https://www.mongodb.com/)
+* [Docker](https://www.docker.com/)
+
+### Install dependencies
+
+```bash
+$ npm install
 ```
 
-Please commit your code to a public repo and provide instructions on how to setup / run locally. Also, please send request shape examples (cURL or preferably a Postman export). 
+### Start API
 
-Aside from working within node, the db and server-side framework is of your choice. If you have any questions please email casper@verifi.media or ryan@verifi.media
+To execute the mongodb database in a Docker container, run:
+```bash
+$ docker-compose up --build
+```
 
-##### Dupe Notes
-- 3 versions of "Altar" (2 of 3 contain a null field)
-- 2 versions of "Work" (1 array is missing 2nd artist)
-- 2 versions of "Divide" (1 upc is an empty string)
-- 2 versions of "Goddess" (1 artist array is empty)
-- 2 versions of "Hayley Kyoko" (no differences in data)
-- 2 versions of "Years & Years" (1 contains an empty genre [])
-- 2 version of "Ed Sheeran" (1 has a spotify id w/ an empty string)
-- 2 labels intentionally contain a null distributor field
+API will be listening at 
+```bash
+$ http://localhost:3000
+```
+
+### Populate database
+
+```bash
+$ npm run seed
+```
+
+### Lint
+
+```bash
+$ npm run lint
+```
+
+### Test
+
+Unit Test
+
+```bash
+$ npm run test
+```
+
+### Author
+
+| [![github/ofelipechan](https://avatars0.githubusercontent.com/u/26874734?v=3&s=115)](https://github.com/ofelipechan "Checkout github") |
+|---|
+| [Felipe S. Chan](https://github.com/ofelipechan) |
