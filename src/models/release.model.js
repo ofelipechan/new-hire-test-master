@@ -3,26 +3,35 @@ const Schema = mongoose.Schema;
 
 const Release = new Schema({
     title: {
-        type: String
+        type: String,
+        required: true
     },
     'release-date': {
         type: String
     },
     'track-count': {
-        type: Number
+        type: Number,
+        required: true
     },
     upc: {
-        type: String
+        type: String,
+        required: true,
+        unique: true
     },
-    artists: [{
-        type: String
-    }],
+    artists: {
+        type: [String],
+        required: true,
+        validate: v => Array.isArray(v) && v.length > 0
+    },
     label: {
-        type: String
+        type: String,
+        required: true
     },
     type: {
         type: String
     }
+}, {
+    versionKey: false
 });
 
 

@@ -14,6 +14,8 @@ const Label = new Schema({
     region: {
         type: String
     }
+}, {
+    versionKey: false
 });
 
 

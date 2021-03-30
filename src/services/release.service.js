@@ -1,12 +1,12 @@
 const Release = require('../models/release.model');
 
 class ReleaseService {
-    async findAll() {
+    async find() {
         try {
             const result = await Release.find().lean();
             return result;
         } catch (error) {
-            console.error('An error occurred while trying to find all releases. ', error);
+            throw error;
         }
     }
 
@@ -15,27 +15,19 @@ class ReleaseService {
             const result = await Release.findOne(conditions);
             return result;
         } catch (error) {
-            console.error('An error occurred while trying to find a release. ', error);
+            throw error;
         }
     }
 
-    async createOrUpdate(release) {
+    async create(release) {
         try {
-            const filters = { id: release.id, name: release.name };
-            const options = { upsert: true, useFindAndModify: false, strict: false };
-            await Release.updateOne(filters, release, options);                
+            await Release.create(release);                
             return {
                 message: 'Executed successfully',
             };
         } catch (error) {
-            throw this.errorHandler('An error occurred while trying to create a release.', error);
+            throw msg;
         }
-    }
-
-    errorHandler(message, error) {
-        console.error(message);
-        console.error(error);
-        throw message;
     }
 }
 

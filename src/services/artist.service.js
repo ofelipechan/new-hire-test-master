@@ -1,7 +1,7 @@
 const Artist = require('../models/artist.model');
 
 class ArtistService {
-    async findAll() {
+    async find() {
         try {
             const result = await Artist.find().lean();
             return result;
@@ -19,11 +19,9 @@ class ArtistService {
         }
     }
 
-    async createOrUpdate(artist) {
+    async create(artist) {
         try {
-            const filters = { id: artist.id, name: artist.name };
-            const options = { upsert: true, useFindAndModify: false, strict: false };
-            await Artist.updateOne(filters, artist, options);                
+            await Artist.create(artist);                
             return {
                 message: 'Executed successfully',
             };

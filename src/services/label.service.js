@@ -1,7 +1,7 @@
 const Label = require('../models/label.model');
 
 class LabelService {
-    async findAll() {
+    async find() {
         try {
             const result = await Label.find().lean();
             return result;
@@ -19,7 +19,7 @@ class LabelService {
         }
     }
 
-    async createOrUpdate(label) {
+    async create(label) {
         try {
             const filters = { id: label.id, name: label.name };
             const options = { upsert: true, useFindAndModify: false, strict: false };

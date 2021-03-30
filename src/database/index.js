@@ -2,7 +2,12 @@ const mongoose = require('mongoose');
 const connectionString = process.env.MONGO_CONNECTION || 'mongodb://localhost:27017/node-test-app';
 
 async function connectDatabase(callback) {
-    return callback(await mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true }));
+    const options = {
+        useCreateIndex: true,
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    };
+    return callback(await mongoose.connect(connectionString, options));
 }
 
 async function disconnectDatabase() {
@@ -10,4 +15,7 @@ async function disconnectDatabase() {
     console.log('database disconnected');
 }
 
-module.exports = { connectDatabase, disconnectDatabase };
+module.exports = {
+    connectDatabase,
+    disconnectDatabase
+};
