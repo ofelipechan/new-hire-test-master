@@ -7,7 +7,9 @@ let done = 0;
 
 connectDatabase(() => {
     console.log('database connected');
+    console.log('importing seed files');
     requireFiles();
+    console.log('creating documents')
     seedsToInsert.forEach((item) => {
         createDocuments(item.data, item.service);
     })
@@ -50,7 +52,7 @@ async function createDocuments(list, service) {
 function afterSave() {
     done++;
     if (done === totalLength) {
-        console.log('Seed finished');
+        console.log('seed finished');
         disconnectDatabase();
     }
 }

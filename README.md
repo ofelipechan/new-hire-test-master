@@ -2,7 +2,7 @@
 
 ## This project uses
 
-* [Nodejs](https://nodejs.org/)
+* [Node.js](https://nodejs.org/)
 * [Mongodb](https://www.mongodb.com/)
 * [Docker](https://www.docker.com/)
 
@@ -14,18 +14,18 @@ $ npm install
 
 ### Start API
 
-To execute the mongodb database in a Docker container, run:
+To execute the app with the mongodb database in a Docker container, run:
+```bash
+$ docker-compose pull
+```
 ```bash
 $ docker-compose up --build
 ```
 
-API will be listening at 
-```bash
-$ http://localhost:3000
-```
+API will be listening at http://localhost:3000
 
-### Populate database
-
+### Seed
+To populate the database, open another command terminal window and run:
 ```bash
 $ npm run seed
 ```
@@ -36,9 +36,7 @@ $ npm run seed
 $ npm run lint
 ```
 
-### Test
-
-Unit Test
+### Unit Test
 
 ```bash
 $ npm run test
