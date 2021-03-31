@@ -55,14 +55,14 @@ class ArtistService {
     buildQuery(query) {
         if (query.name) {
             query.name = {
-                "$regex": query.name,
-                "$options": "i"
+                $regex: query.name,
+                $options: 'i'
             };
         }
         if (query.id) {
             query.id = {
-                "$regex": query.id,
-                "$options": "i"
+                $regex: query.id,
+                $options: 'i'
             };
         }
         return query;

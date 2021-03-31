@@ -4,7 +4,7 @@ const {
     disconnectDatabase
 } = require('../src/database');
 
-const seedsToInsert = []
+const seedsToInsert = [];
 const errors = [];
 let totalLength = 0;
 let done = 0;
@@ -14,7 +14,7 @@ connectDatabase(() => {
     try {
         console.log('importing seed files');
         requireFiles();
-        console.log(`preparing to create ${totalLength} documents`)
+        console.log(`preparing to create ${totalLength} documents`);
         seedsToInsert.forEach((item) => {
             createDocuments(item);
         });
@@ -38,7 +38,7 @@ function requireFiles() {
 
     fs.readdirSync(directory)
         .filter((fileName) => fileName.endsWith('.json'))
-        .map(mapFilesAndServices)
+        .map(mapFilesAndServices);
 }
 
 function mapService(fileName) {
@@ -56,7 +56,7 @@ function mapService(fileName) {
 async function createDocuments(list) {
     list.data.forEach(async (object) => {
         try {
-            await list.service.create(object);            
+            await list.service.create(object);
         } catch (error) {
             errors.push({
                 reference: list.reference,
@@ -76,4 +76,3 @@ function afterSave() {
         console.log('Errors: ' + JSON.stringify(errors));
     }
 }
-

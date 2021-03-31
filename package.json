@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node src/app.js",
     "local": "nodemon src/app.js",
-    "seed": "node seed/index.js"
+    "seed": "node seed/index.js",
+    "lint": "eslint ./"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,9 @@
     "mongoose": "^5.12.2"
   },
   "devDependencies": {
+    "eslint": "^7.23.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
     "nodemon": "^2.0.7"
   }
 }

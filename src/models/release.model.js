@@ -20,12 +20,12 @@ const Release = new Schema({
             unique: true,
             dropDups: true
         },
-        validate: v => typeof(v) === 'string' && v.length > 0
+        validate: (v) => typeof(v) === 'string' && v.length > 0
     },
     artists: {
         type: [String],
         required: true,
-        validate: v => Array.isArray(v) && v.length > 0
+        validate: (v) => Array.isArray(v) && v.length > 0
     },
     label: {
         type: String,

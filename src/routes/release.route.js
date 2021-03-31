@@ -1,6 +1,6 @@
 const express = require('express');
-const router = express.Router();
 const ReleaseService = require('../services/release.service');
+const router = express.Router();
 
 router.get('/all', async (req, res) => {
     try {

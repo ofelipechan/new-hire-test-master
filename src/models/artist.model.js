@@ -19,7 +19,7 @@ const Artist = new Schema({
     genres: {
         type: [String],
         required: true,
-        validate: v => Array.isArray(v) && v.length > 0
+        validate: (v) => Array.isArray(v) && v.length > 0
     }
 }, {
     versionKey: false

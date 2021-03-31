@@ -21,7 +21,7 @@ class LabelService {
 
     async create(label) {
         try {
-            await Label.create(label);                
+            await Label.create(label);
             return {
                 message: 'Executed successfully',
             };
