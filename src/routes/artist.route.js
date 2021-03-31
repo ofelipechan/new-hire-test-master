@@ -15,11 +15,10 @@ router.get('/', async (req, res) => {
 
 router.get('/all', async (req, res) => {
     try {
-        let query = {};
-        if (!isObjectEmpty(req.query)) {
-            query = req.query;
-        }
-        res.json(await ArtistService.find(query));
+        const { id, name, type, upc, label } = req.query;
+        let query = { id, name };
+        clearEmptyFields(query);
+        res.json(await ArtistService.find(query, { type, upc, label }));
     } catch (error) {
         res.status(400).json(error.message);
     }
@@ -49,5 +48,19 @@ router.post('/', async (req, res) => {
 module.exports = router;
 
 function isObjectEmpty(obj) {
-    return !obj.name && !obj.id;
+    clearEmptyFields(obj);
+    if(obj && Object.keys(obj).length === 0 && obj.constructor === Object) {
+        return true;
+    }
+    if(!obj.name && !obj.id) {
+        return true;
+    }
+}
+
+function clearEmptyFields(obj) {
+    for (const propName in obj) {
+        if (!obj[propName]) {
+            delete obj[propName];
+        }
+    }
 }

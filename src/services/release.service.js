@@ -4,9 +4,15 @@ const LabelService = require('./label.service');
 class ReleaseService {
     async find(query) {
         try {
-            this.buildQuery(query);
-            const releases = await Release.find(query).lean();
+            let label;
+            if (query && query.label) {
+                label = query.label;
+                delete query.label;
+            }
+
+            let releases = await Release.find(query).lean();
             if (releases.length > 0) {
+                releases = this.applyFilters(releases, label);
                 for (const release of releases) {
                     release.label = await LabelService.findOne({
                         id: release.label
@@ -21,7 +27,6 @@ class ReleaseService {
 
     async findOne(conditions) {
         try {
-            this.buildQuery(conditions);
             const release = await Release.findOne(conditions).lean();
             release.label = await LabelService.findOne({
                 id: release.label
@@ -43,17 +48,10 @@ class ReleaseService {
         }
     }
 
-    buildQuery(query) {
-        if (!query) return;
-        if (query.type && query.type.toLowerCase() === "album") {
-            query["track-count"] = {
-                $gte: 1
-            };
-        }
-        if (query.type && query.type.toLowerCase() === "single") {
-            query["track-count"] = 1;
-        }
-        delete query.type;
+    applyFilters(releases, label) {
+        if (!label) return releases;
+
+        return releases.filter((release) => release.label === label);
     }
 }
 
