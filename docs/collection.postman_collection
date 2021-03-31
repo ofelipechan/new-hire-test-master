@@ -1,0 +1,197 @@
+{
+	"info": {
+		"_postman_id": "692c7426-cccf-4e90-ab11-2bb880744bb2",
+		"name": "New Hire Test Master",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Artist",
+			"item": [
+				{
+					"name": "Create artist",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"1110\",\r\n    \"name\": \"Test\",\r\n    \"spotifyId\": \"123457\",\r\n    \"genres\": [\r\n        \"test1\",\r\n        \"test2\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/artist",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"artist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Single artist",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/artist?name=Ed Sheeran",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"artist"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Ed Sheeran"
+								},
+								{
+									"key": "id",
+									"value": "111223",
+									"disabled": true
+								}
+							]
+						},
+						"description": "- Return a single artist by name or ID"
+					},
+					"response": []
+				},
+				{
+					"name": "List all artists",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/artist/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"artist",
+								"all"
+							]
+						},
+						"description": "- Return multiple artists by names or ID's"
+					},
+					"response": []
+				},
+				{
+					"name": "List all with query params",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/artist/all?type=single",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"artist",
+								"all"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "11122",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "Banks",
+									"disabled": true
+								},
+								{
+									"key": "type",
+									"value": "single",
+									"description": "Filter by \"album\" or \"single\""
+								},
+								{
+									"key": "upc",
+									"value": "5050580590649",
+									"disabled": true
+								},
+								{
+									"key": "label",
+									"value": "222122",
+									"disabled": true
+								}
+							]
+						},
+						"description": "- Return all artist data\n- Return multiple artists by names or ID's\n- Filter by \"album\" or \"single\"\n- Filter by label id\n- Filter by UPC"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Releases",
+			"item": [
+				{
+					"name": "List all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/release/all?type=album",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"release",
+								"all"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "album",
+									"description": "Choose between \"album\" and \"single\""
+								}
+							]
+						},
+						"description": "- Filter by \"album\" or \"single\"\n- Filter by label id\n- Filter by UPC"
+					},
+					"response": []
+				},
+				{
+					"name": "Search by upc",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/release/upc/190295851330",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"release",
+								"upc",
+								"190295851330"
+							]
+						},
+						"description": "- Filter by \"album\" or \"single\"\n- Filter by label id\n- Filter by UPC"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

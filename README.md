@@ -6,6 +6,11 @@
 * [Mongodb](https://www.mongodb.com/)
 * [Docker](https://www.docker.com/)
 
+## Docs
+
+* [Exercise](docs/exercise.md)
+* [Postman collection](docs/collection.postman_collection)
+
 ### Install dependencies
 
 ```bash
@@ -22,7 +27,14 @@ $ docker-compose pull
 $ docker-compose up --build
 ```
 
-API will be listening at http://localhost:4000
+Docker port will be listening at http://localhost:4000
+
+If you want to run server outside of docker, run
+```bash
+$ npm start
+```
+
+API will be listening at http://localhost:3000
 
 ### Seed
 To populate the database, open another command terminal window and run:

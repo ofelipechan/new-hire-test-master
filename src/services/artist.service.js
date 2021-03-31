@@ -39,7 +39,7 @@ class ArtistService {
         try {
             await Artist.create(artist);
             return {
-                message: 'Executed successfully',
+                message: 'Created successfully',
             };
         } catch (error) {
             throw error.message || error;

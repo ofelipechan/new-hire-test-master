@@ -3,10 +3,10 @@
 - Using a data processing implementation, remove any existing duplicates before inserting them into your data repository.
 - Create a POST route that validates and saves incoming data 
 - Create a GET route that can retrieve and return artist release data based on the following parameters:
-    - Return all artist data - ok
-    - Return a single artist by name or ID - ok
-    - Return multiple artists by names or ID's - ok
-    - Filter by "album" or "single" - ok
+    - Return all artist data
+    - Return a single artist by name or ID
+    - Return multiple artists by names or ID's
+    - Filter by "album" or "single"
     - Filter by label id
     - Filter by UPC
 

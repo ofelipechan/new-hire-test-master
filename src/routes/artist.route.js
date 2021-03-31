@@ -64,18 +64,17 @@ router.post('/', async (req, res) => {
         spotifyId,
         genres
     } = req.body;
-    let response;
     try {
-        response = await ArtistService.create({
+        const response = await ArtistService.create({
             id,
             name,
             spotifyId,
             genres
         });
+        res.json(response);
     } catch (error) {
-        response = error;
+        res.status(400).json(error.message);
     }
-    res.json(response);
 });
 
 module.exports = router;
