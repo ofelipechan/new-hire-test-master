@@ -77,13 +77,3 @@ function afterSave() {
     }
 }
 
-
-
-
-
-
-
-
-// const artist = new Artist({
-
-// });

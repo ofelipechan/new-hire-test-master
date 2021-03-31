@@ -21,21 +21,13 @@ class LabelService {
 
     async create(label) {
         try {
-            const filters = { id: label.id, name: label.name };
-            const options = { upsert: true, useFindAndModify: false, strict: false };
-            await Label.updateOne(filters, label, options);                
+            await Label.create(label);                
             return {
                 message: 'Executed successfully',
             };
         } catch (error) {
-            throw this.errorHandler('An error occurred while trying to create labels.', error);
+            throw error.message || error;
         }
-    }
-
-    errorHandler(message, error) {
-        console.error(message);
-        console.error(error);
-        throw message;
     }
 }
 

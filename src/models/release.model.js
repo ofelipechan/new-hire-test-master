@@ -15,8 +15,12 @@ const Release = new Schema({
     },
     upc: {
         type: String,
-        required: true,
-        unique: true
+        unique: true,
+        index: {
+            unique: true,
+            dropDups: true
+        },
+        validate: v => typeof(v) === 'string' && v.length > 0
     },
     artists: {
         type: [String],
@@ -36,5 +40,5 @@ const Release = new Schema({
 
 
 const model = mongoose.model('Release', Release);
-
+model.createIndexes();
 module.exports = model;

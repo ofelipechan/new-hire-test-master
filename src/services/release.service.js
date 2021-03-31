@@ -26,7 +26,7 @@ class ReleaseService {
                 message: 'Executed successfully',
             };
         } catch (error) {
-            throw msg;
+            throw error.message || error;
         }
     }
 }

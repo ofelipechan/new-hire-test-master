@@ -74,7 +74,7 @@ Aside from working within node, the db and server-side framework is of your choi
 - 2 versions of "Work" (1 array is missing 2nd artist) - ok
 - 2 versions of "Divide" (1 upc is an empty string) - ok
 - 2 versions of "Goddess" (1 artist array is empty) - ok
-- 2 versions of "Hayley Kyoko" (no differences in data)
+- 2 versions of "Hayley Kyoko" (no differences in data) - ok
 - 2 versions of "Years & Years" (1 contains an empty genre [])
 - 2 version of "Ed Sheeran" (1 has a spotify id w/ an empty string)
 - 2 labels intentionally contain a null distributor field

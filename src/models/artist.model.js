@@ -4,34 +4,27 @@ const Schema = mongoose.Schema;
 const Artist = new Schema({
     id: {
         type: String,
+        index: {
+            unique: true,
+            dropDups: true
+        }
     },
     name: {
         type: String
     },
     spotifyId: {
-        type: String
+        type: String,
+        unique: true,
     },
-    genres: [{
-        type: String
-    }]
+    genres: {
+        type: [String],
+        required: true,
+        validate: v => Array.isArray(v) && v.length > 0
+    }
 }, {
     versionKey: false
 });
 
-// Artist.pre('save', (next) => {
-//     console.log(next);
-//     autoincremental(model, this, next);
-// });
-
-
-// async function autoincremental(model, data, next) {
-//     const total = await model.find().sort({
-//         id: -1
-//     }).limit(1);
-//     data.id = total.length === 0 ? 1 : (Number(total[0].id) + 1).toString();
-//     next();
-// };
-
-
 const model = mongoose.model('Artist', Artist);
+model.createIndexes();
 module.exports = model;

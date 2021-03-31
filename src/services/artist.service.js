@@ -1,9 +1,9 @@
 const Artist = require('../models/artist.model');
 
 class ArtistService {
-    async find() {
+    async find(query) {
         try {
-            const result = await Artist.find().lean();
+            const result = await Artist.find(query).lean();
             return result;
         } catch (error) {
             console.error('An error occurred while trying to find all artists. ', error);
@@ -21,19 +21,13 @@ class ArtistService {
 
     async create(artist) {
         try {
-            await Artist.create(artist);                
+            await Artist.create(artist);             
             return {
                 message: 'Executed successfully',
             };
         } catch (error) {
-            throw this.errorHandler('An error occurred while trying to create artists.', error);
+            throw error.message || error;
         }
-    }
-
-    errorHandler(message, error) {
-        console.error(message);
-        console.error(error);
-        throw message;
     }
 }
 
