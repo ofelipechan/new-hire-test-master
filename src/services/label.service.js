@@ -12,7 +12,7 @@ class LabelService {
 
     async findOne(conditions) {
         try {
-            const result = await Label.findOne(conditions);
+            const result = await Label.findOne(conditions).lean();
             return result;
         } catch (error) {
             console.error('An error occurred while trying to find an label. ', error);

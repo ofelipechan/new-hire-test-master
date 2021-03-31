@@ -3,10 +3,10 @@
 - Using a data processing implementation, remove any existing duplicates before inserting them into your data repository.
 - Create a POST route that validates and saves incoming data 
 - Create a GET route that can retrieve and return artist release data based on the following parameters:
-    - Return all artist data
-    - Return a single artist by name or ID
-    - Return multiple artists by names or ID's
-    - Filter by "album" or "single"
+    - Return all artist data - ok
+    - Return a single artist by name or ID - ok
+    - Return multiple artists by names or ID's - ok
+    - Filter by "album" or "single" - ok
     - Filter by label id
     - Filter by UPC
 
@@ -70,11 +70,11 @@ Please commit your code to a public repo and provide instructions on how to setu
 Aside from working within node, the db and server-side framework is of your choice. If you have any questions please email casper@verifi.media or ryan@verifi.media
 
 ##### Dupe Notes
-- 3 versions of "Altar" (2 of 3 contain a null field) - ok
-- 2 versions of "Work" (1 array is missing 2nd artist) - ok
-- 2 versions of "Divide" (1 upc is an empty string) - ok
-- 2 versions of "Goddess" (1 artist array is empty) - ok
-- 2 versions of "Hayley Kyoko" (no differences in data) - ok
-- 2 versions of "Years & Years" (1 contains an empty genre [])
-- 2 version of "Ed Sheeran" (1 has a spotify id w/ an empty string)
+- 3 versions of "Altar" (2 of 3 contain a null field)
+- 2 versions of "Work" (1 array is missing 2nd artist)
+- 2 versions of "Divide" (1 upc is an empty string)
+- 2 versions of "Goddess" (1 artist array is empty)
+- 2 versions of "Hayley Kyoko" (no differences in data) 
+- 2 versions of "Years & Years" (1 contains an empty genre []) 
+- 2 version of "Ed Sheeran" (1 has a spotify id w/ an empty string) 
 - 2 labels intentionally contain a null distributor field
