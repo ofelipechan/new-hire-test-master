@@ -36,12 +36,6 @@ $ npm run seed
 $ npm run lint
 ```
 
-### Unit Test
-
-```bash
-$ npm run test
-```
-
 ### Author
 
 | [![github/ofelipechan](https://avatars0.githubusercontent.com/u/26874734?v=3&s=115)](https://github.com/ofelipechan "Checkout github") |
