@@ -7,7 +7,9 @@
     "start": "node src/app.js",
     "local": "nodemon src/app.js",
     "seed": "node seed/index.js",
-    "lint": "eslint ./"
+    "lint": "eslint ./",
+    "test": "mocha src/tests --timeout 10000",
+    "test-watch": "mocha src/tests --watch"
   },
   "repository": {
     "type": "git",
@@ -24,9 +26,12 @@
     "mongoose": "^5.12.2"
   },
   "devDependencies": {
+    "chai": "^4.3.4",
     "eslint": "^7.23.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
-    "nodemon": "^2.0.7"
+    "mocha": "^8.3.2",
+    "nodemon": "^2.0.7",
+    "sinon": "^10.0.0"
   }
 }
